@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-
+let veiculos = [];
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('<h1>LIMP LOCAÇÕES</h1><a href="/login">Entrar no sistema</a>');
 });
@@ -58,6 +58,29 @@ app.get('/dashboard', (req, res) => {
     </html>
   `);
 });
-app.listen(PORT, '0.0.0.0', () => {
+app.get('/frota', (req, res) => {
+  let lista = veiculos.map(v => `<li>${v.placa} - ${v.modelo}</li>`).join('');
+
+  res.send(`
+    <h1>Frota</h1>
+    <ul>${lista}</ul>
+
+    <h3>Cadastrar Veículo</h3>
+    <form method="POST" action="/frota">
+      <input name="placa" placeholder="Placa" required />
+      <input name="modelo" placeholder="Modelo" required />
+      <button type="submit">Salvar</button>
+    </form>
+
+    <br>
+    <a href="/dashboard">Voltar</a>
+  `);app.post('/frota', (req, res) => {
+  const { placa, modelo } = req.body;
+
+  veiculos.push({ placa, modelo });
+
+  res.redirect('/frota');
+});
+});app.listen(PORT, '0.0.0.0', () => {
   console.log('Servidor rodando');
 });
