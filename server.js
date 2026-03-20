@@ -45,7 +45,7 @@ app.get('/dashboard', (req, res) => {
       <body>
         <div class="menu">
           <h3>LIMP</h3>
-          <a href="#">Frota</a>
+         <a href="/frota">Frota</a>
           <a href="#">Abastecimento</a>
           <a href="#">Manutenção</a>
           <a href="#">Financeiro</a>
