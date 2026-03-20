@@ -12,14 +12,47 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.send(`
-    <h2>Tela de Login</h2>
-    <p>Funcionando</p>
+    <html>
+      <head>
+        <title>Login</title>
+        <style>
+          body {
+            font-family: Arial;
+            background: #f4b400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+          .login {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+          }
+          input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+          }
+          button {
+            width: 100%;
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="login">
+          <h2>LIMP LOCAÇÕES</h2>
+          <input type="text" placeholder="Usuário" />
+          <input type="password" placeholder="Senha" />
+          <button onclick="alert('Login em breve')">Entrar</button>
+        </div>
+      </body>
+    </html>
   `);
 });
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('Servidor rodando');
-});
- 
