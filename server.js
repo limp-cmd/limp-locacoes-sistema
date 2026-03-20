@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.send('<h2>Login</h2><p>Sistema em desenvolvimento</p>');
+  res.send('<h2>Login</h2><a href="/dashboard">Entrar no sistema</a>');
 });
 
 const PORT = process.env.PORT || 3000;
